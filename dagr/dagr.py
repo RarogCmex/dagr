@@ -173,7 +173,7 @@ class Dagr:
 
         if get_resp.headers.get("content-type"):
             content_type = get_resp.headers.get("content-type").split(";")[0]
-            file_ext = guess_extension(content_type)
+            file_ext = guess_extension(content_type).replace('jpe','jpg') if guess_extension(content_type) else guess_extension(content_type)
             if file_ext:
                 rename(file_name, file_name + file_ext)
             else:
